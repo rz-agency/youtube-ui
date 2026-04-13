@@ -1,128 +1,63 @@
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-/* HEADER */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background: #fff;
-    border-bottom: 1px solid #ccc;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo img {
-    height: 30px;
-}
-
-.search-bar input {
-    width: 400px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-}
-
-.profile img {
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-}
-
-/* SIDEBAR */
+/* Sidebar Styling */
 .sidebar {
-    position: fixed;
-    top: 60px;
-    left: 0;
     width: 200px;
-    height: 100%;
-    background: #f9f9f9;
-    padding: 20px;
+    height: 100vh;
+    position: fixed; /* Keeps it fixed on the left */
+    left: 0;
+    top: 0;
+    background-color: #f9f9f9;
+    padding-top: 20px;
+    border-right: 1px solid #ddd;
+    z-index: 100; /* Ensures sidebar stays on top */
 }
 
 .sidebar ul {
     list-style: none;
+    padding: 0;
 }
 
 .sidebar li {
-    padding: 10px 0;
+    padding: 15px 20px;
     cursor: pointer;
+    font-family: sans-serif;
 }
 
 .sidebar li:hover {
-    background: #e5e5e5;
+    background-color: #e5e5e5;
 }
 
-/* MAIN CONTENT */
-.content {
-    margin-left: 220px;
-    margin-top: 70px;
-    padding: 20px;
-}
-
-/* VIDEO GRID */
-.video-grid {
+/* Video Grid Layout */
+.video-container {
+    margin-left: 220px; /* Leaves space for the sidebar */
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* This makes it 3 columns, but switches to 2 or 1 if the screen gets small */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
     gap: 20px;
+    padding: 20px;
+    font-family: sans-serif;
 }
 
+/* Video Card Styling */
 .video-card {
-    cursor: pointer;
+    background: white;
 }
 
 .thumbnail {
-    width: 100%;
-    border-radius: 10px;
+    width: 100%;       /* Fits the card width */
+    height: 180px;     /* Set a standard height for all images */
+    object-fit: cover; /* This prevents the "stretched" look */
+    border-radius: 12px;
 }
 
-.video-card h4 {
-    margin: 8px 0 4px;
+.video-title {
+    font-size: 16px;
+    margin: 10px 0 5px 0;
+    font-weight: bold;
+    color: #0f0f0f;
 }
 
-.video-card p {
-    color: gray;
+.channel-name, .stats {
     font-size: 14px;
-}
-
-.video-card span {
-    color: gray;
-    font-size: 12px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .video-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .search-bar input {
-        width: 250px;
-    }
-}
-
-@media (max-width: 600px) {
-    .sidebar {
-        display: none;
-    }
-
-    .content {
-        margin-left: 0;
-    }
-
-    .video-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .search-bar input {
-        width: 150px;
-    }
+    color: #606060;
+    margin: 2px 0;
 }
